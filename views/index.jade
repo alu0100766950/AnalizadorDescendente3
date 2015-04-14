@@ -6,31 +6,66 @@ block content
       li
         a(href="/post/#{post.id}")= post.title
         .content!=post.body
-  h1
-    p
-    | Analizador Descendente <br>
-    | Predictivo Recursivo
-    p
-      input#files(type='file')
-    div(width='100%')
-      textarea#INPUT(placeholder='Introduzca el texto o arrastre el archivo que desea analizar.')
-    #botones
-      input#PARSE.btn.btn-primary(value='Parsear', type='button', role='button')
-      input#CLEAR.btn.btn-primary(value='Limpiar', type='button', role='button')
-    noscript
-      p You may not see it because you have JavaScript turned off. Uffff!
-    script(type='text/javascript' src='http://coffeescript.org/extras/coffee-script.js')
-    script(type='text/coffeescript' src='/coffeescripts/main.coffee')
-    pre#OUTPUT.
+  h1.page-header
+              | Analizador 
+              small Descendente Predictivo Recursivo
+        |             
+        .row
+          .panel-heading
+            section
+              p This website contains a simple example of a predictive parser
+              |                     
+              #header.header
+                p Load example to parse
+                |                         
+                div
+                  textarea#original(autofocus='', cols='80', rows='5')
+                |                         
+                br
+                |                         
+                #prueba
+                |                         
+                div
+                  .loadfile
+                    button#example1(onclick="dump('/examples/example1.txt');", type='button') Ejemplo 1
+                    |                                 
+                    button#example2(onclick="dump('/examples/example2.txt');", type='button') Ejemplo 2
+                    |                                 
+                    button#example3(onclick="dump('/examples/example3.txt');", type='button') Ejemplo 3
+                    |                                 
+                    button#exampleerr(onclick="dump('/examples/example_err.txt');", type='button') Ejemplo Error
+                    |                                 
+                    input#files(type='file')
+                  |                             
+                  script.
+                    $(document).ready(function() {
+                    $("#example1").click(function(){
+                    })
+                    });
+                    function dump(fileName) {
+                    $.ajax({
+                    url: fileName,
+                    cache: false,
+                    success: function (data) {
+                    $("#original").val(data);
+                    }
+                    });
+                    }
+                    document.getElementById("files").addEventListener('change', CopyMe, false);
+                    function CopyMe(evt) {
+                    var file = evt.target.files[0];
+                    if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                    original.innerHTML = e.target.result;
+                    }
+                    reader.readAsText(file);
+                    }
+                    else { alert("Failed to load file"); }
+                    }
+              |                     
+              .panel-body
+                input#PARSE.mylink(type='button', value='parse')
+                |                         
+                pre#OUTPUT.
 
-    div(style='position: absolute; top: 1%; left: 1%; padding: 2%;')
-      table#info
-        tr
-          th
-            a.btn.btn-primary(href='https://github.com/MauricioMCavalleriS/ADPR', role='button', target='_blank') repositorio
-        tr
-          th
-            a.btn.btn-primary(href='http://mauriciomcavalleris.github.io', role='button', target='_blank') github-page del autor Mauricio
-        tr
-          th
-            a.btn.btn-primary(href='http://danielquijada.github.io', role='button', target='_blank') github-page del autor Daniel
