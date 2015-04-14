@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  - each post in posts
+    .page-header
+      li
+        a(href="/post/#{post.id}")= post.title
+        .content!=post.body
+  h1
+    p
+    | Analizador Descendente <br>
+    | Predictivo Recursivo
+    p
+      input#files(type='file')
+    div(width='100%')
+      textarea#INPUT(placeholder='Introduzca el texto o arrastre el archivo que desea analizar.')
+    #botones
+      input#PARSE.btn.btn-primary(value='Parsear', type='button', role='button')
+      input#CLEAR.btn.btn-primary(value='Limpiar', type='button', role='button')
+    noscript
+      p You may not see it because you have JavaScript turned off. Uffff!
+    script(type='text/javascript' src='http://coffeescript.org/extras/coffee-script.js')
+    script(type='text/coffeescript' src='/coffeescripts/main.coffee')
+    pre#OUTPUT.
+
+    div(style='position: absolute; top: 1%; left: 1%; padding: 2%;')
+      table#info
+        tr
+          th
+            a.btn.btn-primary(href='https://github.com/MauricioMCavalleriS/ADPR', role='button', target='_blank') repositorio
+        tr
+          th
+            a.btn.btn-primary(href='http://mauriciomcavalleris.github.io', role='button', target='_blank') github-page del autor Mauricio
+        tr
+          th
+            a.btn.btn-primary(href='http://danielquijada.github.io', role='button', target='_blank') github-page del autor Daniel

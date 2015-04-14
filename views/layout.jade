@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title Analizador Descendente Predictivo Recursivo
+    link(href='stylesheets/bootstrap.min.css', rel='stylesheet', type='text/css')
+    link(href='stylesheets/global.css', rel='stylesheet', type='text/css')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js')
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+    link(rel='icon', type='image/png', href="../images/coffee-favicon.png")
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js')
+  body
+    .topbar-wrapper
+      .topbar
+        .topbar-inner
+          .container
+            h3: a(href="/") My Coffeepress Blog
+            ul.nav
+              li: a(href="/post/new") New Post
+              #content.container
+                block content
