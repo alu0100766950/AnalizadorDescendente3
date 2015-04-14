@@ -1,20 +1,36 @@
 doctype html
 html
   head
-    title Analizador Descendente Predictivo Recursivo
-    link(href='stylesheets/bootstrap.min.css', rel='stylesheet', type='text/css')
-    link(href='stylesheets/global.css', rel='stylesheet', type='text/css')
+    title Analizador Descendente Predictivo Recursivo    
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js')
     script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
-    link(rel='icon', type='image/png', href="../images/coffee-favicon.png")
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js')
+          meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    // Añadido con posterioridad
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js')
+    script(type='text/javascript', src='http://github.com/jashkenas/coffee-script/raw/master/extras/coffee-script.js')
+    script(src='./public/coffeescript/main.coffee', type='text/coffeescript')
+    script(src='./llamaCoffee.js', type='text/javascript')
+    link(href='http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css', media='screen, projection', rel='stylesheet')
+    // Bootstrap Styles
+    link(href='assets/css/bootstrap.css', rel='stylesheet')
+    // FontAwesome Styles
+    link(href='assets/css/font-awesome.css', rel='stylesheet')
+    // Morris Chart Styles
+    link(href='assets/js/morris/morris-0.4.3.min.css', rel='stylesheet')
+    // Custom Styles
+    link(href='images/favicon.jpg', rel='icon', type='image/jpg')
+    link(href='assets/css/custom-styles.css', rel='stylesheet')
+    link(href='/styles.css', media='screen, projection', rel='stylesheet')
+    // Google Fonts
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans', rel='stylesheet', type='text/css')
   body
-    .topbar-wrapper
-      .topbar
-        .topbar-inner
-          .container
-            h3: a(href="/") My Coffeepress Blog
+    #page-wrapper
+      #page-inner
+        .row
+          .col-md-12
             ul.nav
-              li: a(href="/post/new") New Post
               #content.container
                 block content
