@@ -1,9 +1,5 @@
 ##!/usr/bin/env node
 
-###*
-# Module dependencies.
-###
-
 app = require('../app')
 debug = require('debug')('Analizador_DPR:server')
 http = require('http')
@@ -57,7 +53,7 @@ onListening = ->
   bind = if typeof addr == 'string' then 'pipe ' + addr else 'port ' + addr.port
   debug 'Listening on ' + bind
   return
-
+  
 app.set 'port', port
 
 ###*

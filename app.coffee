@@ -5,6 +5,7 @@ logger = require('morgan')
 cookieParser = require('cookie-parser')
 bodyParser = require('body-parser')
 routes = require('./routes/index')
+
 app = express()
 # view engine setup
 app.set 'views', path.join(__dirname, 'views')
