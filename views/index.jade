@@ -1,61 +1,117 @@
 extends layout
 
 block content
-  h1.page-header
-    | Analizador 
-    small Descendente Predictivo Recursivo
-  .row
-  .panel-heading
-    section
-      p This website contains a simple example of a predictive parser
-      |                     
-      #header.header
-        p Load example to parse
-        |                         
-        div
-          textarea#original(autofocus='', cols='80', rows='5')
-        |                         
-        br
-        |                         
-        #prueba
-        |                         
-        div
-          .loadfile
-            button#example1(onclick="dump('/examples/example1.txt');", type='button') Ejemplo 1
-            |                                 
-            button#example2(onclick="dump('/examples/example2.txt');", type='button') Ejemplo 2
-            |                                 
-            button#example3(onclick="dump('/examples/example3.txt');", type='button') Ejemplo 3
-            |                                 
-            button#exampleerr(onclick="dump('/examples/example_err.txt');", type='button') Ejemplo Error
-            |                                 
-            input#files(type='file')                      
-          script.
-            $(document).ready(function() {
-            $("#example1").click(function(){
-            })
-            });
-            function dump(fileName) {
-            $.ajax({
-            url: fileName,
-            cache: false,
-            success: function (data) {
-            $("#original").val(data);
-            }
-            });
-            }
-            document.getElementById("files").addEventListener('change', CopyMe, false);
-            function CopyMe(evt) {
-            var file = evt.target.files[0];
-            if (file) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-            original.innerHTML = e.target.result;
-            }
-            reader.readAsText(file);
-            }
-            else { alert("Failed to load file"); }
-            }
-  .panel-body
-    input#PARSE.mylink(type='button', value='parse')
-    pre#OUTPUT
+  #wrapper
+      nav.navbar.navbar-default.top-navbar(role='navigation')
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='index.html')
+            b A
+            | DPR
+        ul.nav.navbar-top-links.navbar-right
+          // Gh-Pages
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='#', aria-expanded='false')
+              i.fa.fa-user.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-user
+              li
+                a(href='http://alu0100716894.github.io', target='_blank')
+                  i.fa.fa-user.fa-fw
+                  |  Manuel Rodriguez Santana
+              li
+                a(href='http://alu0100766950.github.io', target='_blank')
+                  i.fa.fa-user.fa-fw
+                  |  Jose Carlos Rodriguez Cortes
+          // Github
+          li.dropdown
+            a(href='https://github.com/alu0100766950/AnalizadorDescendente/tree/gh-pages', target='_blank')
+              img(src='http://gilcreque.com/assets/img/github.png', style='height: 32px; width: 32px')
+          // Heroku
+          li.dropdown
+            a(href='#', target='_blank')
+              img(src='https://devcenter.heroku.com/assets/favicon-90e838409660ce441e3c9c206cb707e8.ico', style='height: 32px; width: 32px')
+          // Heroku
+          li.dropdown
+            a(href='#', target='_blank')
+              img(src='http://www.psicotecnicas.es/images/tuto_tests.png', style='height: 32px; width: 32px')
+      nav.navbar-default.navbar-side(role='navigation')
+        .sidebar-collapse
+          ul#main-menu.nav
+            li
+              a.active-menu(href='index.html')
+                i.fa.fa-home
+                | Home
+            li
+              a(href='https://github.com/alu0100766950/AnalizadorDescendente/tree/gh-pages', target='_blank')
+                i.fa.fa-github
+                | Gitub
+            li
+              a(href='mathjax.html')
+                i.fa.fa-home
+                | MathJax
+            li
+              a(href='#')
+                i.fa.fa-file-text
+                | Tests
+            li
+              a(href='#')
+                i.fa.fa-bolt
+                | Heroku
+    #page-wrapper
+      #page-inner
+        .row
+          .col-md-12
+            h1.page-header
+              | Analizador 
+              small Descendente Predictivo Recursivo
+        .row
+          .panel-heading
+            section
+              p This website contains a simple example of a predictive parser
+              #header.header
+                p Load example to parse
+                div
+                  textarea#original(autofocus='', cols='80', rows='5')
+                br
+                #prueba
+                div
+                  .loadfile
+                    button#example1(onclick="dump('/examples/example1.txt');", type='button') Ejemplo 1
+                    button#example2(onclick="dump('/examples/example2.txt');", type='button') Ejemplo 2
+                    button#example3(onclick="dump('/examples/example3.txt');", type='button') Ejemplo 3
+                    button#exampleerr(onclick="dump('/examples/example_err.txt');", type='button') Ejemplo Error
+                    input#files(type='file')
+                  script.
+                    $(document).ready(function() {
+                    $("#example1").click(function(){
+                    })
+                    });
+                    function dump(fileName) {
+                    $.ajax({
+                    url: fileName,
+                    cache: false,
+                    success: function (data) {
+                    $("#original").val(data);
+                    }
+                    });
+                    }
+                    document.getElementById("files").addEventListener('change', CopyMe, false);
+                    function CopyMe(evt) {
+                    var file = evt.target.files[0];
+                    if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                    original.innerHTML = e.target.result;
+                    }
+                    reader.readAsText(file);
+                    }
+                    else { alert("Failed to load file"); }
+                    }
+              .panel-body
+                input#PARSE.mylink(type='button', value='parse')
+                pre#OUTPUT.
