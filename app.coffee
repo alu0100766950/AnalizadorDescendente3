@@ -5,6 +5,8 @@ logger = require('morgan')
 cookieParser = require('cookie-parser')
 bodyParser = require('body-parser')
 routes = require('./routes/index')
+sass = require('node-sass')
+sassMiddleware = require('node-sass-middleware');
 
 app = express()
 # view engine setup
@@ -16,6 +18,18 @@ app.use logger('dev')
 app.use bodyParser.json()
 app.use bodyParser.urlencoded(extended: false)
 app.use cookieParser()
+
+
+srcPath = __dirname + '/sass'
+destPath = __dirname + '/public'
+app.use(sassMiddleware({
+       src: srcPath,
+       dest: destPath,
+       debug: true,
+   }));
+
+
+
 app.use express.static(path.join(__dirname, 'public'))
 app.use '/', routes.index
 app.use '/post/new', routes.newPost
