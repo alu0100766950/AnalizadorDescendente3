@@ -20,7 +20,9 @@
     "chai": "^2.2.0",
     "expect": "^1.6.0",
     "js2coffee": "^2.0.3",
-    "mocha": "^2.2.4"
+    "mocha": "^2.2.4",
+    "node-sass": "^2.1.1",
+    "sass-middleware": "0.0.3"
   },
   "author": "",
   "license": "ISC"
